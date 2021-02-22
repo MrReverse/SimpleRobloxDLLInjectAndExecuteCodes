@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Holly_X
+namespace urnamespace
 {
     class DLLPipe
     {
@@ -66,8 +66,7 @@ namespace Holly_X
                     }
                     catch (IOException)
                     {
-                        HollyMsgBoxClass Msg = new HollyMsgBoxClass();
-                        Msg.Error("0x7950002", "Error while connecting to pipe");
+                        MessageBox.Show("Error while connecting to pipe")
                     }
                     catch (Exception ex)
                     {
@@ -78,18 +77,18 @@ namespace Holly_X
             else
             {
               
-                HollyMsgBoxClass Msg = new HollyMsgBoxClass();
-                Msg.Error("Not injected (0x01)", "Please Inject for execute a script!");
+                
+               MessageBox.Show("Please Inject for execute a script!");
             }
         }
 
-        public static string luapipename = "furkisgay";
+        public static string luapipename = "pipename";
 
 
 
         public static void Inject()
         {
-            DLLInject.DllInjectionResult dllInjectionResult = DLLInject.DllInjector.GetInstance.Inject("RobloxPlayerBeta", Application.StartupPath + "//Holly-main.dll");
+            DLLInject.DllInjectionResult dllInjectionResult = DLLInject.DllInjector.GetInstance.Inject("RobloxPlayerBeta", Application.StartupPath + "//exploit-dll.dll");
             if (dllInjectionResult == DLLInject.DllInjectionResult.Success)
             {
                 return;
@@ -98,17 +97,13 @@ namespace Holly_X
             {
               
                 case DLLInject.DllInjectionResult.DllNotFound:
-                    HollyMsgBoxClass Msg = new HollyMsgBoxClass();
-                    Msg.Error("Dll not found (0x02)", "<Holly-main.dll> not found please reinstall Holly X");
+                  MessageBox.Show("dll not found")
                     return;
                 case DLLInject.DllInjectionResult.GameProcessNotFound:
-                    HollyMsgBoxClass Msg2 = new HollyMsgBoxClass();
-                    Msg2.Error("Roblox not found (0x034)", "Roblox not found please open roblox");
+                  MessageBox.Show("Roblox not found please open roblox");
                     return;
                 case DLLInject.DllInjectionResult.InjectionFailed:
-
-                    HollyMsgBoxClass Msg3 = new HollyMsgBoxClass();
-                    Msg3.Error("Failed (0x0345201)", "Failed while injecting the dll");
+ MessageBox.Show("Failed while injecting the dll");
                     return;
                
                     
